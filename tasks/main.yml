@@ -1,0 +1,8 @@
+---
+
+- name: Install chocolatey
+  ansible.builtin.include_tasks: install.yml
+
+- name: Install required chocolatey packages
+  ansible.builtin.include_tasks: packages.yml
+  when: chocolatey_packages | length > 0
