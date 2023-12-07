@@ -1,0 +1,22 @@
+---
+
+# Chocolatey installation script
+chocolatey_bootstrap_script: https://community.chocolatey.org/install.ps1
+
+# Chocolatey repository
+chocolatey_repository: https://community.chocolatey.org/api/v2/
+
+# Should the default public source be delete
+chocolatey_delete_public_source: false
+
+# Extra sources to configure
+chocolatey_sources: []
+
+# List of chcolatey packages to install
+chocolatey_packages: []
+
+# Update package to latest version
+chocolatey_package_update: false
+
+# Proxy for connecting to repository & software packages
+# chocolatey_proxy_url: http://127.0.0.1:3128

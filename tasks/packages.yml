@@ -1,0 +1,15 @@
+---
+
+- name: Install packages
+  chocolatey.chocolatey.win_chocolatey:
+    name: "{{ item }}"
+    state: present
+    proxy_url: "{{ chocolatey_proxy_url | default(omit) }}"
+  loop: "{{ chocolatey_packages }}"
+
+- name: Update packages
+  chocolatey.chocolatey.win_chocolatey:
+    name: "{{ item }}"
+    state: latest
+  loop: "{{ chocolatey_packages }}"
+  when: chocolatey_package_update | bool

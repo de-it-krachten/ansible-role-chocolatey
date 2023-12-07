@@ -1,0 +1,21 @@
+---
+
+- name: Install chocolatey
+  chocolatey.chocolatey.win_chocolatey:
+    name: chocolatey
+    state: present
+    bootstrap_script: "{{ chocolatey_bootstrap_script | default(omit) }}"
+    source: "{{ chocolatey_bootstrap_source | default(omit) }}"
+
+- name: Remove the default public source
+  chocolatey.chocolatey.win_chocolatey_source:
+    name: chocolatey
+    state: absent
+  when: chocolatey_delete_public_source | bool
+
+- name: Add custom source
+  chocolatey.chocolatey.win_chocolatey_source:
+    name: "{{ item.name }}"
+    state: present
+    source: "{{ item.url }}"
+  loop: "{{ chocolatey_sources }}"
