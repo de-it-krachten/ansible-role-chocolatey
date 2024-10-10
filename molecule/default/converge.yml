@@ -4,7 +4,10 @@
   hosts: all
   become: "yes"
   vars:
-    chocolatey_packages: ['mobaxterm', 'putty.install']
+    chocolatey_packages:
+      - putty.install
+      - { name: mobaxterm, ignore_checksums: true }
+
   tasks:
     - name: Include role 'ansible-role-chocolatey'
       ansible.builtin.include_role:

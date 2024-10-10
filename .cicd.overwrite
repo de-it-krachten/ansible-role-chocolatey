@@ -113,8 +113,8 @@ molecule:
   converge:
     vars:
       chocolatey_packages:
-        - mobaxterm
         - putty.install
+        - { name: mobaxterm, ignore_checksums: true }
 
 # Github
 github:

@@ -65,8 +65,8 @@ chocolatey_package_update: false
   become: 'yes'
   vars:
     chocolatey_packages:
-      - mobaxterm
       - putty.install
+      - { name: mobaxterm, ignore_checksums: true }
   tasks:
     - name: Include role 'chocolatey'
       ansible.builtin.include_role:
