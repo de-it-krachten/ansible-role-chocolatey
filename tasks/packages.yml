@@ -2,7 +2,8 @@
 
 - name: Install/update packages
   chocolatey.chocolatey.win_chocolatey:
-    name: "{{ item }}"
+    name: "{{ item.name | default(item) }}"
     state: "{{ 'latest' if (chocolatey_package_update | bool) else 'present' }}"
-    proxy_url: "{{ chocolatey_proxy_url | default(omit) }}"
+    proxy_url: "{{ item.proxy_url | default(chocolatey_proxy_url) | default(omit) }}"
+    ignore_checksums: "{{ item.ignore_checksums | default(omit) }}"
   loop: "{{ chocolatey_packages }}"
