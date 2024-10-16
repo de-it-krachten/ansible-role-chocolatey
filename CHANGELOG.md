@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/de-it-krachten/ansible-role-chocolatey/compare/v1.1.0...v1.1.1) (2024-10-16)
+
+
+### Bug Fixes
+
+* Add support for ignoring checksum ([02927b8](https://github.com/de-it-krachten/ansible-role-chocolatey/commit/02927b88e6730d0dd281803207f499aa8cee3116))
+
 # [1.1.0](https://github.com/de-it-krachten/ansible-role-chocolatey/compare/v1.0.0...v1.1.0) (2024-05-31)
 
 
