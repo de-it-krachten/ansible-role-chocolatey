@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/de-it-krachten/ansible-role-chocolatey/compare/v1.1.1...v1.2.0) (2024-12-29)
+
+
+### Features
+
+* Update supported platforms & CI ([c9e5e0c](https://github.com/de-it-krachten/ansible-role-chocolatey/commit/c9e5e0c6ffcdd516b8f8e2fceb0340dcf344ec5a))
+
 ## [1.1.1](https://github.com/de-it-krachten/ansible-role-chocolatey/compare/v1.1.0...v1.1.1) (2024-10-16)
 
 
