@@ -1,3 +1,11 @@
+## [1.3.1](https://github.com/de-it-krachten/ansible-role-chocolatey/compare/v1.3.0...v1.3.1) (2026-01-21)
+
+
+### Bug Fixes
+
+* Add support for specific package versions ([40a9216](https://github.com/de-it-krachten/ansible-role-chocolatey/commit/40a92160ca8356ace92cd1b917f9a1fffbca606e))
+* Add support for uninstalling packages ([a490b5b](https://github.com/de-it-krachten/ansible-role-chocolatey/commit/a490b5bae0876163910cc738eadb2125cc899cb1))
+
 # [1.3.0](https://github.com/de-it-krachten/ansible-role-chocolatey/compare/v1.2.0...v1.3.0) (2025-08-06)
 
 
