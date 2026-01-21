@@ -4,7 +4,8 @@
   hosts: all
   become: "yes"
   vars:
-    chocolatey_packages: ['putty.install', {'name': 'mobaxterm', 'ignore_checksums': True}]
+    molecule_driver: "{{ lookup('env', 'MOLECULE_DRIVER_NAME') }}"
+    chocolatey_packages: [{'name': 'putty.install', 'version': 'latest'}, {'name': 'mobaxterm', 'ignore_checksums': True}]
   tasks:
     - name: Include role 'ansible-role-chocolatey'
       ansible.builtin.include_role:
