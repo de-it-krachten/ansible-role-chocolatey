@@ -20,6 +20,7 @@ None
 
 Supported platforms
 
+- Fedora 43
 - Windows Server 2012 R2<sup>1</sup>
 - Windows Server 2016<sup>1</sup>
 - Windows Server 2019<sup>1</sup>
@@ -64,8 +65,10 @@ chocolatey_package_update: false
   hosts: all
   become: 'yes'
   vars:
+    molecule_driver: '{{ lookup(''env'', ''MOLECULE_DRIVER_NAME'') }}'
     chocolatey_packages:
-      - putty.install
+      - name: putty.install
+        version: latest
       - name: mobaxterm
         ignore_checksums: true
   tasks:
