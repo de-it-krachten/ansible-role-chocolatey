@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/de-it-krachten/ansible-role-chocolatey/compare/v1.3.1...v1.4.0) (2026-03-14)
+
+
+### Features
+
+* Drop support for Fedora 43 ([1e7258c](https://github.com/de-it-krachten/ansible-role-chocolatey/commit/1e7258cc2d9e763b962b20d6fa1339734607f0ff))
+
 ## [1.3.1](https://github.com/de-it-krachten/ansible-role-chocolatey/compare/v1.3.0...v1.3.1) (2026-01-21)
 
 
