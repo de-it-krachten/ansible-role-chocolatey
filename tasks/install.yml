@@ -1,11 +1,57 @@
 ---
 
-- name: Install chocolatey
+- name: Show settings
+  ansible.builtin.debug:
+    msg:
+      chocolatey_install_location: "{{ chocolatey_install_location }}"
+      chocolatey_bootstrap_script: "{{ chocolatey_bootstrap_script | default('N/A') }}"
+      chocolatey_download_url: "{{ chocolatey_download_url | default('N/A') }}"
+      chocolatey_delete_public_source: "{{ chocolatey_delete_public_source | default('N/A') }}"
+      chocolatey_sources: "{{ chocolatey_sources | default([]) }}"
+
+- name: Check if chocolatey is already installed
+  ansible.windows.win_stat:
+    path: "{{ chocolatey_install_location }}/bin/choco.exe"
+  register: __chocolatey_install_location
+
+- name: Bootstrap host
+  when:
+    - not __chocolatey_install_location.stat.exists
+  vars:
+    chocolatey_bootstrap_local_script: 'C:\Windows\Temp\install-chocolatey.ps1'
+  block:
+
+    - name: Download chocolatey bootstrap script
+      ansible.windows.win_get_url:
+        url: "{{ chocolatey_bootstrap_script }}"
+        dest: "{{ chocolatey_bootstrap_local_script }}"
+        force: true
+
+    - name: Run chocolatey bootstrap script
+      ansible.windows.win_shell: >-
+        powershell.exe -ExecutionPolicy Bypass -File {{ chocolatey_bootstrap_local_script }}
+      environment:
+        chocolateyDownloadUrl: "{{ chocolatey_download_url | default(omit) }}"
+      register: choco_bootstrap
+      changed_when: true
+
+    - name: Save bootstrap output
+      ansible.windows.win_copy:
+        content: "{{ choco_bootstrap | to_nice_json }}"
+        dest: "{{ chocolatey_bootstrap_local_script | regex_replace('\\.ps1', '.log') }}"
+
+    - name: Clean up bootstrap script
+      ansible.windows.win_file:
+        path: "{{ chocolatey_bootstrap_local_script }}"
+        state: absent
+
+    - name: Reset connection so new process sees updated PATH
+      ansible.builtin.meta: reset_connection
+
+- name: Make sure chocolatey is available
   chocolatey.chocolatey.win_chocolatey:
     name: chocolatey
-    state: present
-    bootstrap_script: "{{ chocolatey_bootstrap_script | default(omit) }}"
-    source: "{{ chocolatey_bootstrap_source | default(omit) }}"
+    state: "{{ chocolatey_version }}"
 
 - name: Remove the default public source
   chocolatey.chocolatey.win_chocolatey_source:
