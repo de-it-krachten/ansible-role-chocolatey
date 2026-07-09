@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/de-it-krachten/ansible-role-chocolatey/compare/v1.4.0...v1.4.1) (2026-07-09)
+
+
+### Bug Fixes
+
+* Improve installation ([256c1c7](https://github.com/de-it-krachten/ansible-role-chocolatey/commit/256c1c7b3fc4ea809ff4b9b56423bbd2613ed751))
+
 # [1.4.0](https://github.com/de-it-krachten/ansible-role-chocolatey/compare/v1.3.1...v1.4.0) (2026-03-14)
 
 
