@@ -6,6 +6,12 @@ chocolatey_bootstrap_script: https://community.chocolatey.org/install.ps1
 # Chocolatey repository
 chocolatey_repository: https://community.chocolatey.org/api/v2/
 
+# Chocolatey installation location
+chocolatey_install_location: 'C:\ProgramData\chocolatey'
+
+# Chocolatey version
+chocolatey_version: present
+
 # Should the default public source be delete
 chocolatey_delete_public_source: false
 
